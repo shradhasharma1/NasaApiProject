@@ -4,7 +4,7 @@ const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 5007;
-const NASA_API_KEY = 'dFyDpv3PzSWK9Ko7izo5H2U5ZBsKUrduNmJi1F8P'; // Replace with your actual API key
+const NASA_API_KEY = 'dFyDpv3PzSWK9Ko7izo5H2U5ZBsKUrduNmJi1F8P'; // Replace with your actual API key that you can get from nasa website
 
 app.use(cors());
 
@@ -29,27 +29,26 @@ app.get('/mars-photos', async (req, res) => {
     try {
         let url = 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?';
 
-        // Check if both sol and earth_date are provided
+        // Checking if both sol and earth_date are provided (criteria i added as per valid api query that we can pass)
         if (sol && earth_date) {
             return res.status(400).json({ error: 'Please provide either sol and camera or earth_date, not both.' });
         }
 
-        // Check if sol is provided
+        // Checking if sol is provided (criteria i added as per valid api query that we can pass)
         if (sol) {
             url += `sol=${sol}`;
             if (camera) {
                 url += `&camera=${camera}`;
             }
         }
-        // Check if earth_date is provided
+        // Checking if earth_date is provided (criteria i added as per valid api query that we can pass)
         else if (earth_date) {
             url += `earth_date=${earth_date}`;
         } else {
             return res.status(400).json({ error: 'Please provide either sol and camera or earth_date.' });
         }
 
-        // Always append the API key
-        url += `&api_key=${NASA_API_KEY}`; // Use your actual NASA API key here
+        url += `&api_key=${NASA_API_KEY}`; // Use your actual NASA API key here that was given by nasa over mail
 
         const response = await axios.get(url);
         const photos = response.data.photos;
@@ -65,8 +64,6 @@ app.get('/mars-photos', async (req, res) => {
     }
 });
 
-
-// Start the server
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
