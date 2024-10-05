@@ -30,7 +30,7 @@ const Apod = () => {
         }
 
         try {
-            const response = await axios.get(`https://nasa-api-project-y6kj.vercel.app/apod?date=${date}`);
+            const response = await axios.get(`https://nasaapiproject.onrender.com/apod?date=${date}`);
             setApodData(response.data);
         } catch (err) {
             setError('Error fetching APOD data.');

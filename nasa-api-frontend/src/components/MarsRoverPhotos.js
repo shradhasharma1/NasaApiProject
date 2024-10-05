@@ -94,9 +94,9 @@ const MarsRoverPhotos = () => {
 
             if (earthDate) {
                 const formattedDate = moment(earthDate).format('YYYY-MM-DD');
-                url = `https://nasa-api-project-y6kj.vercel.app/mars-photos?earth_date=${formattedDate}`;
+                url = `https://nasaapiproject.onrender.com/mars-photos?earth_date=${formattedDate}`;
             } else if (sol) {
-                url = `https://nasa-api-project-y6kj.vercel.app/mars-photos?sol=${sol}`;
+                url = `https://nasaapiproject.onrender.com/mars-photos?sol=${sol}`;
                 if (camera) {
                     url += `&camera=${camera}`;
                 }
