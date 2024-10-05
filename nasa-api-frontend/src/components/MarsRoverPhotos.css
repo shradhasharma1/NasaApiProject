@@ -1,0 +1,4 @@
+.MuiInputLabel-root {
+    position: absolute; // Adjusts the label position
+    transform: translate(14px, -6px) scale(0.75); // Position adjustment
+}
